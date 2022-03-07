@@ -1,5 +1,5 @@
 # Base OU for searching for expired accounts
-$BaseSeachOU="OU=Users,DC=Domain,DC=Local"
+$BaseSearchOU="OU=Users,DC=Domain,DC=Local"
 
 # OU that the expired accounts will be moved to
 $DestinationOU="OU=DisabledUsers,DC=Domain,DC=Local"
@@ -39,7 +39,7 @@ function New-Password {
 }
 
 # Searches the set base OU for accounts that have passed their expiry date
-$Users=Search-ADAccount -AccountExpired -UsersOnly -SearchBase $BaseSeachOU
+$Users=Search-ADAccount -AccountExpired -UsersOnly -SearchBase $BaseSearchOU
 
 # Goes through each account and check to see if it is disabled or not
 ForEach ($user in $Users) 
